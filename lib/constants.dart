@@ -1,0 +1,1 @@
+const kPerPage = 20;
