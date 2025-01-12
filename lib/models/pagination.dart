@@ -10,8 +10,8 @@ class Pagination<T> with _$Pagination<T> {
   const Pagination._();
 
   const factory Pagination({
-    required int totalCount,
-    required List<T> value,
+    @Default(0) int totalCount,
+    @Default([]) List<T> value,
   }) = _Pagination;
 
   int get maxPage {

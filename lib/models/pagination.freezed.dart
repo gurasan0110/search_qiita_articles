@@ -109,15 +109,16 @@ class __$$PaginationImplCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$PaginationImpl<T> extends _Pagination<T> {
-  const _$PaginationImpl(
-      {required this.totalCount, required final List<T> value})
+  const _$PaginationImpl({this.totalCount = 0, final List<T> value = const []})
       : _value = value,
         super._();
 
   @override
+  @JsonKey()
   final int totalCount;
   final List<T> _value;
   @override
+  @JsonKey()
   List<T> get value {
     if (_value is EqualUnmodifiableListView) return _value;
     // ignore: implicit_dynamic_type
@@ -153,9 +154,8 @@ class _$PaginationImpl<T> extends _Pagination<T> {
 }
 
 abstract class _Pagination<T> extends Pagination<T> {
-  const factory _Pagination(
-      {required final int totalCount,
-      required final List<T> value}) = _$PaginationImpl<T>;
+  const factory _Pagination({final int totalCount, final List<T> value}) =
+      _$PaginationImpl<T>;
   const _Pagination._() : super._();
 
   @override

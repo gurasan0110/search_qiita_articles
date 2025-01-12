@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ValueS<T> {
-  T? get value => throw _privateConstructorUsedError;
+  T get value => throw _privateConstructorUsedError;
   Exception? get exception => throw _privateConstructorUsedError;
 
   /// Create a copy of ValueS
@@ -31,7 +31,7 @@ abstract class $ValueSCopyWith<T, $Res> {
   factory $ValueSCopyWith(ValueS<T> value, $Res Function(ValueS<T>) then) =
       _$ValueSCopyWithImpl<T, $Res, ValueS<T>>;
   @useResult
-  $Res call({T? value, Exception? exception});
+  $Res call({T value, Exception? exception});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$ValueSCopyWithImpl<T, $Res, $Val extends ValueS<T>>
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as T?,
+              as T,
       exception: freezed == exception
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
@@ -73,7 +73,7 @@ abstract class _$$ValueSImplCopyWith<T, $Res>
       __$$ValueSImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({T? value, Exception? exception});
+  $Res call({T value, Exception? exception});
 }
 
 /// @nodoc
@@ -96,7 +96,7 @@ class __$$ValueSImplCopyWithImpl<T, $Res>
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as T?,
+              as T,
       exception: freezed == exception
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
@@ -108,10 +108,10 @@ class __$$ValueSImplCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$ValueSImpl<T> implements _ValueS<T> {
-  const _$ValueSImpl({this.value, this.exception});
+  const _$ValueSImpl({required this.value, this.exception});
 
   @override
-  final T? value;
+  final T value;
   @override
   final Exception? exception;
 
@@ -144,11 +144,11 @@ class _$ValueSImpl<T> implements _ValueS<T> {
 }
 
 abstract class _ValueS<T> implements ValueS<T> {
-  const factory _ValueS({final T? value, final Exception? exception}) =
+  const factory _ValueS({required final T value, final Exception? exception}) =
       _$ValueSImpl<T>;
 
   @override
-  T? get value;
+  T get value;
   @override
   Exception? get exception;
 

@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:search_qiita_articles/models/article.dart';
 import 'package:search_qiita_articles/services/article_service.dart';
-import 'package:search_qiita_articles/ui/states/pagination_s.dart';
-import 'package:search_qiita_articles/ui/states/value_s.dart';
 import 'package:search_qiita_articles/ui/widgets/pages/home_page/home_page_s.dart';
 
 part 'home_page_notifier.g.dart';
@@ -23,7 +21,7 @@ class HomePageNotifier extends _$HomePageNotifier {
 
     ref.onDispose(init);
 
-    return HomePageS(paginationS: PaginationS(valueS: ValueS()));
+    return HomePageS();
   }
 
   Future<void> init() => Future.microtask(searchFirstPageArticles);
@@ -39,7 +37,7 @@ class HomePageNotifier extends _$HomePageNotifier {
     if (state.paginationS.isLoadingNextPage) return;
 
     final page = state.queryParameters.page + 1;
-    if (state.paginationS.valueS.value!.maxPage < page) return;
+    if (state.paginationS.valueS.value.maxPage < page) return;
 
     state = state.copyWith.paginationS(isLoadingNextPage: true);
     await _searchArticles(page);
@@ -56,8 +54,8 @@ class HomePageNotifier extends _$HomePageNotifier {
     try {
       final pagination = await _service.searchArticles(queryParameters);
       final paginationS = state.paginationS;
-      final oldArticles = paginationS.valueS.value?.value;
-      final articles = page == 1 ? <Article>[] : oldArticles!;
+      final oldArticles = paginationS.valueS.value.value;
+      final articles = page == 1 ? <Article>[] : oldArticles;
       final newArticles = articles + pagination.value;
       final newPagination = pagination.copyWith(value: newArticles);
       final newPaginationS = paginationS.copyWith.valueS(value: newPagination);

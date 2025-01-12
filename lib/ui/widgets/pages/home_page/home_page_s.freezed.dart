@@ -140,12 +140,14 @@ class __$$HomePageSImplCopyWithImpl<$Res>
 class _$HomePageSImpl implements _HomePageS {
   const _$HomePageSImpl(
       {this.queryParameters = const QueryParameters(),
-      required this.paginationS});
+      this.paginationS =
+          const PaginationS(valueS: ValueS(value: Pagination()))});
 
   @override
   @JsonKey()
   final QueryParameters queryParameters;
   @override
+  @JsonKey()
   final PaginationS<Article> paginationS;
 
   @override
@@ -179,7 +181,7 @@ class _$HomePageSImpl implements _HomePageS {
 abstract class _HomePageS implements HomePageS {
   const factory _HomePageS(
       {final QueryParameters queryParameters,
-      required final PaginationS<Article> paginationS}) = _$HomePageSImpl;
+      final PaginationS<Article> paginationS}) = _$HomePageSImpl;
 
   @override
   QueryParameters get queryParameters;

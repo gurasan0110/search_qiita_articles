@@ -32,7 +32,7 @@ class HomePageBody extends ConsumerWidget {
     if (isLoadingFirstPage) return Center(child: CircularProgressIndicator());
 
     final articles = ref.watch(homePageNotifierProvider.select(
-      (s) => s.paginationS.valueS.value?.value ?? [],
+      (s) => s.paginationS.valueS.value.value,
     ));
 
     return ListView.builder(
