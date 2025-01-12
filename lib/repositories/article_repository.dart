@@ -1,7 +1,7 @@
-import 'package:search_qiita_articles/data/default_dio.dart';
-import 'package:search_qiita_articles/domain/models/article.dart';
-import 'package:search_qiita_articles/domain/models/pagination.dart';
-import 'package:search_qiita_articles/domain/models/query_parameters.dart';
+import 'package:search_qiita_articles/default_dio.dart';
+import 'package:search_qiita_articles/models/article.dart';
+import 'package:search_qiita_articles/models/pagination.dart';
+import 'package:search_qiita_articles/models/query_parameters.dart';
 import 'package:search_qiita_articles/types.dart';
 
 class ArticleRepository {

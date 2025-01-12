@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:search_qiita_articles/app.dart';
-import 'package:search_qiita_articles/application/services/article_service.dart';
-import 'package:search_qiita_articles/domain/models/query_parameters.dart';
+import 'package:search_qiita_articles/models/query_parameters.dart';
+import 'package:search_qiita_articles/services/article_service.dart';
 
 Future<void> main() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();

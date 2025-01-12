@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:search_qiita_articles/domain/converters/tags_converter.dart';
-import 'package:search_qiita_articles/domain/models/user.dart';
+import 'package:search_qiita_articles/converters/tags_converter.dart';
+import 'package:search_qiita_articles/models/user.dart';
 import 'package:search_qiita_articles/types.dart';
 
 part 'article.freezed.dart';
