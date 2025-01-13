@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:search_qiita_articles/presentation/widgets/article_list_tile.dart';
+import 'package:search_qiita_articles/presentation/widgets/article_list_tile/article_list_tile.dart';
 import 'package:search_qiita_articles/presentation/widgets/pages/home_page/home_page_notifier.dart';
 import 'package:search_qiita_articles/presentation/widgets/pagination_list_view.dart';
 

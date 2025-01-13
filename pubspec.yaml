@@ -7,6 +7,7 @@ environment:
   sdk: ^3.6.0
 
 dependencies:
+  cached_network_image: ^3.4.1
   dio: ^5.7.0
   flutter:
     sdk: flutter
@@ -39,4 +40,4 @@ flutter_gen:
   output: lib/core/gen/
   assets:
     exclude:
-      - assets/images/icon.png
+      - assets/images/app_icon.png
