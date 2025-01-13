@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:search_qiita_articles/ui/widgets/article_list_tile.dart';
 import 'package:search_qiita_articles/ui/widgets/pages/home_page/home_page_notifier.dart';
+import 'package:search_qiita_articles/ui/widgets/pagination_list_view.dart';
 
 class HomePageBody extends ConsumerWidget {
   const HomePageBody({super.key});
@@ -31,16 +33,25 @@ class HomePageBody extends ConsumerWidget {
 
     if (isLoadingFirstPage) return Center(child: CircularProgressIndicator());
 
-    final articles = ref.watch(homePageNotifierProvider.select(
-      (s) => s.paginationS.valueS.value.value,
-    ));
+    final (articles, isLoadingNextPage) = ref.watch(
+      homePageNotifierProvider.select((s) {
+        final paginationS = s.paginationS;
+        return (paginationS.valueS.value.value, paginationS.isLoadingNextPage);
+      }),
+    );
 
-    return ListView.builder(
-      itemBuilder: (context, index) {
-        final article = articles[index];
-        return Text(article.title);
+    return PaginationListView(
+      articles,
+      isLoadingNextPage: isLoadingNextPage,
+      onRefresh: () => ref
+          .read(homePageNotifierProvider.notifier)
+          .researchFirstPageArticles(),
+      onPagination: () async {
+        await ref
+            .read(homePageNotifierProvider.notifier)
+            .searchNextPageArticles();
       },
-      itemCount: articles.length,
+      itemBuilder: (context, article) => ArticleListTile(article),
     );
   }
 }
