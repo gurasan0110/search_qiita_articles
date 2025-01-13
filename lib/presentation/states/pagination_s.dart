@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:search_qiita_articles/models/pagination.dart';
-import 'package:search_qiita_articles/ui/states/value_s.dart';
+import 'package:search_qiita_articles/domain/models/pagination.dart';
+import 'package:search_qiita_articles/presentation/states/value_s.dart';
 
 part 'pagination_s.freezed.dart';
 

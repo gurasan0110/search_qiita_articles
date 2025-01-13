@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:search_qiita_articles/models/article.dart';
+import 'package:search_qiita_articles/domain/models/article.dart';
 
 class ArticleListTile extends StatelessWidget {
   const ArticleListTile(this.article, {super.key});

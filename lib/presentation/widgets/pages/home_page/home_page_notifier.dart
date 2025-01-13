@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:search_qiita_articles/models/article.dart';
-import 'package:search_qiita_articles/models/pagination.dart';
-import 'package:search_qiita_articles/services/article_service.dart';
-import 'package:search_qiita_articles/ui/states/pagination_s.dart';
-import 'package:search_qiita_articles/ui/states/value_s.dart';
-import 'package:search_qiita_articles/ui/widgets/pages/home_page/home_page_s.dart';
+import 'package:search_qiita_articles/application/services/article_service.dart';
+import 'package:search_qiita_articles/domain/models/article.dart';
+import 'package:search_qiita_articles/domain/models/pagination.dart';
+import 'package:search_qiita_articles/presentation/states/pagination_s.dart';
+import 'package:search_qiita_articles/presentation/states/value_s.dart';
+import 'package:search_qiita_articles/presentation/widgets/pages/home_page/home_page_s.dart';
 
 part 'home_page_notifier.g.dart';
 

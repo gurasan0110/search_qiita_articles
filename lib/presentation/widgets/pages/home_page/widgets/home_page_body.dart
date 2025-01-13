@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:search_qiita_articles/ui/widgets/article_list_tile.dart';
-import 'package:search_qiita_articles/ui/widgets/pages/home_page/home_page_notifier.dart';
-import 'package:search_qiita_articles/ui/widgets/pagination_list_view.dart';
+import 'package:search_qiita_articles/presentation/widgets/article_list_tile.dart';
+import 'package:search_qiita_articles/presentation/widgets/pages/home_page/home_page_notifier.dart';
+import 'package:search_qiita_articles/presentation/widgets/pagination_list_view.dart';
 
 class HomePageBody extends ConsumerWidget {
   const HomePageBody({super.key});

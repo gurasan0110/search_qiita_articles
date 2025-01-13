@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:search_qiita_articles/types.dart';
+import 'package:search_qiita_articles/core/types.dart';
 
 part 'user.freezed.dart';
 part 'user.g.dart';

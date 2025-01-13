@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:search_qiita_articles/ui/widgets/logo.dart';
-import 'package:search_qiita_articles/ui/widgets/pages/home_page/widgets/home_page_body.dart';
+import 'package:search_qiita_articles/presentation/widgets/logo.dart';
+import 'package:search_qiita_articles/presentation/widgets/pages/home_page/widgets/home_page_body.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

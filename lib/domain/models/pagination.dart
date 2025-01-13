@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:search_qiita_articles/constants.dart';
+import 'package:search_qiita_articles/core/constants.dart';
 
 part 'pagination.freezed.dart';
 

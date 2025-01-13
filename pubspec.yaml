@@ -36,6 +36,7 @@ flutter:
     - assets/images/
 
 flutter_gen:
+  output: lib/core/gen/
   assets:
     exclude:
       - assets/images/icon.png
