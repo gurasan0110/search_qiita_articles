@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:search_qiita_articles/domain/models/article.dart';
+import 'package:search_qiita_articles/presentation/formatters.dart';
 import 'package:search_qiita_articles/presentation/widgets/profile_image.dart';
 
 class ArticleListTileHeader extends StatelessWidget {
@@ -60,7 +61,7 @@ class ArticleListTileHeader extends StatelessWidget {
                     ),
                 ],
               ),
-              Text(article.updatedAt.toString()),
+              Text(Formatters.date.format(article.updatedAt)),
             ],
           ),
         ),
