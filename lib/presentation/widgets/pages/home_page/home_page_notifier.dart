@@ -3,9 +3,6 @@ import 'dart:async';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:search_qiita_articles/application/services/article_service.dart';
 import 'package:search_qiita_articles/domain/models/article.dart';
-import 'package:search_qiita_articles/domain/models/pagination.dart';
-import 'package:search_qiita_articles/presentation/states/pagination_s.dart';
-import 'package:search_qiita_articles/presentation/states/value_s.dart';
 import 'package:search_qiita_articles/presentation/widgets/pages/home_page/home_page_s.dart';
 
 part 'home_page_notifier.g.dart';
@@ -22,13 +19,7 @@ class HomePageNotifier extends _$HomePageNotifier {
       if (previous == null) Future.microtask(searchFirstPageArticles);
     });
 
-    return HomePageS(
-      paginationS: PaginationS(
-        valueS: ValueS(
-          value: Pagination(),
-        ),
-      ),
-    );
+    return HomePageS();
   }
 
   Future<void> searchFirstPageArticles() async {

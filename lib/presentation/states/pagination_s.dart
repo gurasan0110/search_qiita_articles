@@ -10,5 +10,5 @@ class PaginationS<T> with _$PaginationS<T> {
     required ValueS<Pagination<T>> valueS,
     @Default(false) bool isLoadingFirstPage,
     @Default(false) bool isLoadingNextPage,
-  }) = _PaginationS;
+  }) = _PaginationS<T>;
 }

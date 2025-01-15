@@ -4,11 +4,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:search_qiita_articles/app.dart';
 import 'package:search_qiita_articles/presentation/gen/strings.g.dart';
 
-void main() {
+Future<void> main() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-  LocaleSettings.useDeviceLocale();
+  await LocaleSettings.useDeviceLocale();
 
   FlutterNativeSplash.remove();
 

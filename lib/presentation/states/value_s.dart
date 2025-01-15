@@ -7,5 +7,5 @@ class ValueS<T> with _$ValueS<T> {
   const factory ValueS({
     required T value,
     Exception? exception,
-  }) = _ValueS;
+  }) = _ValueS<T>;
 }

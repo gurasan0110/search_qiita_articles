@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$QueryParameters {
   int get page => throw _privateConstructorUsedError;
-  int get perPage => throw _privateConstructorUsedError;
   String? get query => throw _privateConstructorUsedError;
 
   /// Serializes this QueryParameters to a JSON map.
@@ -36,7 +35,7 @@ abstract class $QueryParametersCopyWith<$Res> {
           QueryParameters value, $Res Function(QueryParameters) then) =
       _$QueryParametersCopyWithImpl<$Res, QueryParameters>;
   @useResult
-  $Res call({int page, int perPage, String? query});
+  $Res call({int page, String? query});
 }
 
 /// @nodoc
@@ -55,17 +54,12 @@ class _$QueryParametersCopyWithImpl<$Res, $Val extends QueryParameters>
   @override
   $Res call({
     Object? page = null,
-    Object? perPage = null,
     Object? query = freezed,
   }) {
     return _then(_value.copyWith(
       page: null == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      perPage: null == perPage
-          ? _value.perPage
-          : perPage // ignore: cast_nullable_to_non_nullable
               as int,
       query: freezed == query
           ? _value.query
@@ -83,7 +77,7 @@ abstract class _$$QueryParametersImplCopyWith<$Res>
       __$$QueryParametersImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int page, int perPage, String? query});
+  $Res call({int page, String? query});
 }
 
 /// @nodoc
@@ -100,17 +94,12 @@ class __$$QueryParametersImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? page = null,
-    Object? perPage = null,
     Object? query = freezed,
   }) {
     return _then(_$QueryParametersImpl(
       page: null == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      perPage: null == perPage
-          ? _value.perPage
-          : perPage // ignore: cast_nullable_to_non_nullable
               as int,
       query: freezed == query
           ? _value.query
@@ -123,21 +112,17 @@ class __$$QueryParametersImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable(createFactory: false)
 class _$QueryParametersImpl implements _QueryParameters {
-  const _$QueryParametersImpl(
-      {this.page = 1, this.perPage = kPerPage, this.query});
+  const _$QueryParametersImpl({this.page = 1, this.query});
 
   @override
   @JsonKey()
   final int page;
   @override
-  @JsonKey()
-  final int perPage;
-  @override
   final String? query;
 
   @override
   String toString() {
-    return 'QueryParameters(page: $page, perPage: $perPage, query: $query)';
+    return 'QueryParameters(page: $page, query: $query)';
   }
 
   @override
@@ -146,13 +131,12 @@ class _$QueryParametersImpl implements _QueryParameters {
         (other.runtimeType == runtimeType &&
             other is _$QueryParametersImpl &&
             (identical(other.page, page) || other.page == page) &&
-            (identical(other.perPage, perPage) || other.perPage == perPage) &&
             (identical(other.query, query) || other.query == query));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, page, perPage, query);
+  int get hashCode => Object.hash(runtimeType, page, query);
 
   /// Create a copy of QueryParameters
   /// with the given fields replaced by the non-null parameter values.
@@ -172,15 +156,11 @@ class _$QueryParametersImpl implements _QueryParameters {
 }
 
 abstract class _QueryParameters implements QueryParameters {
-  const factory _QueryParameters(
-      {final int page,
-      final int perPage,
-      final String? query}) = _$QueryParametersImpl;
+  const factory _QueryParameters({final int page, final String? query}) =
+      _$QueryParametersImpl;
 
   @override
   int get page;
-  @override
-  int get perPage;
   @override
   String? get query;
 

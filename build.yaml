@@ -5,3 +5,15 @@ targets:
         options:
           field_rename: snake
           include_if_null: false
+      flutter_gen:
+        options:
+          output: lib/presentation/gen/
+          assets:
+            exclude:
+              - assets/images/app_icon.png
+          integrations:
+            flutter_svg: true
+      slang_build_runner:
+        options:
+          base_locale: ja
+          output_directory: lib/presentation/gen/

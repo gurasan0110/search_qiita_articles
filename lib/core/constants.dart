@@ -1,1 +1,0 @@
-const kPerPage = 20;
