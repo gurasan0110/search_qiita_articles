@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:search_qiita_articles/domain/models/article.dart';
+import 'package:search_qiita_articles/presentation/app_colors.dart';
 import 'package:search_qiita_articles/presentation/formatters.dart';
+import 'package:search_qiita_articles/presentation/widgets/defaults/d_text.dart';
 import 'package:search_qiita_articles/presentation/widgets/profile_image.dart';
 
 class ArticleListTileHeader extends StatelessWidget {
@@ -21,25 +23,17 @@ class ArticleListTileHeader extends StatelessWidget {
               Row(
                 spacing: 4,
                 children: [
-                  Flexible(
-                    child: Text(
-                      '@${article.user.id}',
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
+                  Flexible(child: DText('@${article.user.id}', maxLines: 1)),
                   if (article.user.name.isNotEmpty)
                     Flexible(
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text('('),
+                          DText('('),
                           Flexible(
-                            child: Text(
-                              article.user.name,
-                              overflow: TextOverflow.ellipsis,
-                            ),
+                            child: DText(article.user.name, maxLines: 1),
                           ),
-                          Text(')'),
+                          DText(')'),
                         ],
                       ),
                     ),
@@ -49,11 +43,11 @@ class ArticleListTileHeader extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         spacing: 4,
                         children: [
-                          Text('in'),
+                          DText('in'),
                           Flexible(
-                            child: Text(
+                            child: DText(
                               article.user.organization,
-                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
                             ),
                           ),
                         ],
@@ -61,7 +55,11 @@ class ArticleListTileHeader extends StatelessWidget {
                     ),
                 ],
               ),
-              Text(Formatters.date.format(article.updatedAt)),
+              DText(
+                Formatters.date.format(article.updatedAt),
+                color: AppColors.mediumEmphasis,
+                size: 12,
+              ),
             ],
           ),
         ),

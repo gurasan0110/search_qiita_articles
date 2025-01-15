@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:search_qiita_articles/presentation/widgets/article_list_tile/article_list_tile.dart';
+import 'package:search_qiita_articles/presentation/widgets/defaults/d_divider.dart';
+import 'package:search_qiita_articles/presentation/widgets/defaults/d_progress_indicator.dart';
+import 'package:search_qiita_articles/presentation/widgets/defaults/d_text.dart';
 import 'package:search_qiita_articles/presentation/widgets/pages/home_page/home_page_notifier.dart';
 import 'package:search_qiita_articles/presentation/widgets/pagination_list_view.dart';
 
@@ -15,11 +18,11 @@ class HomePageBody extends ConsumerWidget {
         final scaffoldMessengerS = ScaffoldMessenger.of(context);
         scaffoldMessengerS.showMaterialBanner(
           MaterialBanner(
-            content: Text(exception.toString()),
+            content: DText(exception.toString()),
             actions: [
               FilledButton.tonal(
                 onPressed: scaffoldMessengerS.hideCurrentMaterialBanner,
-                child: Text('閉じる'),
+                child: DText('閉じる'),
               ),
             ],
           ),
@@ -31,7 +34,7 @@ class HomePageBody extends ConsumerWidget {
       (s) => s.paginationS.isLoadingFirstPage,
     ));
 
-    if (isLoadingFirstPage) return Center(child: CircularProgressIndicator());
+    if (isLoadingFirstPage) return Center(child: DProgressIndicator());
 
     final (articles, isLoadingNextPage) = ref.watch(
       homePageNotifierProvider.select((s) {
@@ -52,6 +55,7 @@ class HomePageBody extends ConsumerWidget {
             .searchNextPageArticles();
       },
       itemBuilder: (context, article) => ArticleListTile(article),
+      separatorBuilder: (context) => DDivider(),
     );
   }
 }

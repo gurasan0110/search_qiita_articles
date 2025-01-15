@@ -10,6 +10,8 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Logo(),
+        centerTitle: true,
+        forceMaterialTransparency: true,
       ),
       body: HomePageBody(),
     );

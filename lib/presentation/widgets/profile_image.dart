@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:search_qiita_articles/core/gen/assets.gen.dart';
+import 'package:search_qiita_articles/presentation/gen/assets.gen.dart';
+import 'package:search_qiita_articles/presentation/widgets/defaults/d_progress_indicator.dart';
 
 class ProfileImage extends StatelessWidget {
   const ProfileImage(this.url, {super.key});
@@ -15,10 +16,7 @@ class ProfileImage extends StatelessWidget {
         child: CachedNetworkImage(
           imageUrl: url,
           progressIndicatorBuilder: (context, url, progress) {
-            return CircularProgressIndicator(
-              value: progress.progress,
-              strokeAlign: CircularProgressIndicator.strokeAlignInside,
-            );
+            return DProgressIndicator(value: progress.progress);
           },
           errorWidget: (context, url, error) => Assets.images.icon.image(),
         ),

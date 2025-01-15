@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:search_qiita_articles/core/gen/assets.gen.dart';
+import 'package:search_qiita_articles/presentation/gen/assets.gen.dart';
 
 class Logo extends StatelessWidget {
   const Logo({super.key});
