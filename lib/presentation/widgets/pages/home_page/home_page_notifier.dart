@@ -22,6 +22,11 @@ class HomePageNotifier extends _$HomePageNotifier {
     return HomePageS();
   }
 
+  Future<void> setQuery(String query) async {
+    state = state.copyWith.queryParameters(query: query);
+    await searchFirstPageArticles();
+  }
+
   Future<void> searchFirstPageArticles() async {
     if (state.paginationS.isLoadingFirstPage) return;
     state = state.copyWith.paginationS(isLoadingFirstPage: true);

@@ -38,6 +38,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	// Translations
 	String get datePattern => 'yyyy年MM月dd日';
+	String get searchArticles => '記事を検索';
 }
 
 /// Flat map(s) containing all translations.
@@ -46,6 +47,7 @@ extension on Translations {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'datePattern': return 'yyyy年MM月dd日';
+			case 'searchArticles': return '記事を検索';
 			default: return null;
 		}
 	}

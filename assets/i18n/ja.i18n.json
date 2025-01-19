@@ -1,3 +1,4 @@
 {
-    "datePattern": "yyyy年MM月dd日"
+    "datePattern": "yyyy年MM月dd日",
+    "searchArticles": "記事を検索"
 }
