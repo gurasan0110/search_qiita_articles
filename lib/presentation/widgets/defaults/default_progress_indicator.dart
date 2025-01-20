@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:search_qiita_articles/presentation/app_colors.dart';
 
-class DProgressIndicator extends StatelessWidget {
-  const DProgressIndicator({super.key, this.value});
+class DefaultProgressIndicator extends StatelessWidget {
+  const DefaultProgressIndicator({super.key, this.value});
 
   final double? value;
 

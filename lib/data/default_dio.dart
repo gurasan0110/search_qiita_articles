@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
-class DDio with DioMixin implements Dio {
-  DDio();
+class DefaultDio with DioMixin implements Dio {
+  DefaultDio();
 
   @override
   BaseOptions get options => BaseOptions(baseUrl: 'https://qiita.com/api/v2');

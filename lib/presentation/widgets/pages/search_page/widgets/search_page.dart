@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:search_qiita_articles/presentation/app_colors.dart';
-import 'package:search_qiita_articles/presentation/widgets/defaults/d_app_bar/d_app_bar.dart';
-import 'package:search_qiita_articles/presentation/widgets/defaults/d_app_bar/d_app_bar_bottom.dart';
+import 'package:search_qiita_articles/presentation/widgets/defaults/default_app_bar/default_app_bar.dart';
+import 'package:search_qiita_articles/presentation/widgets/defaults/default_app_bar/default_app_bar_bottom.dart';
 import 'package:search_qiita_articles/presentation/widgets/pages/search_page/search_page_notifier.dart';
 import 'package:search_qiita_articles/presentation/widgets/pages/search_page/widgets/search_page_body.dart';
 import 'package:search_qiita_articles/presentation/widgets/search_text_field.dart';
@@ -21,8 +21,8 @@ class SearchPage extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        appBar: DAppBar(
-          bottom: DAppBarBottom(
+        appBar: DefaultAppBar(
+          bottom: DefaultAppBarBottom(
             child: SearchTextField(onSubmitted: (query) async {
               if (query.trim().isEmpty) return;
               await Navigator.push(

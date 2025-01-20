@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:search_qiita_articles/domain/models/article.dart';
 import 'package:search_qiita_articles/presentation/app_colors.dart';
 import 'package:search_qiita_articles/presentation/formatters.dart';
-import 'package:search_qiita_articles/presentation/widgets/defaults/d_text.dart';
+import 'package:search_qiita_articles/presentation/widgets/defaults/default_text.dart';
 import 'package:search_qiita_articles/presentation/widgets/profile_image.dart';
 
 class ArticleListTileHeader extends StatelessWidget {
@@ -23,23 +23,22 @@ class ArticleListTileHeader extends StatelessWidget {
               Row(
                 spacing: 4,
                 children: [
-                  Flexible(child: DText('@${article.user.id}', maxLines: 1)),
+                  Flexible(
+                    child: DefaultText('@${article.user.id}', maxLines: 1),
+                  ),
                   if (article.user.name.isNotEmpty)
                     Flexible(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          DText('('),
-                          Flexible(
-                            child: DText(article.user.name, maxLines: 1),
-                          ),
-                          DText(')'),
-                        ],
-                      ),
+                      child: Row(children: [
+                        DefaultText('('),
+                        Flexible(
+                          child: DefaultText(article.user.name, maxLines: 1),
+                        ),
+                        DefaultText(')'),
+                      ]),
                     ),
                 ],
               ),
-              DText(
+              DefaultText(
                 Formatters.date.format(article.updatedAt),
                 color: AppColors.mediumEmphasis,
                 size: 12,

@@ -3,7 +3,7 @@ import 'package:search_qiita_articles/domain/models/article.dart';
 import 'package:search_qiita_articles/presentation/app_colors.dart';
 import 'package:search_qiita_articles/presentation/extensions/color_extension.dart';
 import 'package:search_qiita_articles/presentation/gen/assets.gen.dart';
-import 'package:search_qiita_articles/presentation/widgets/defaults/d_text.dart';
+import 'package:search_qiita_articles/presentation/widgets/defaults/default_text.dart';
 
 class ArticleListTileBottom extends StatelessWidget {
   const ArticleListTileBottom(this.article, {super.key});
@@ -23,7 +23,7 @@ class ArticleListTileBottom extends StatelessWidget {
               height: 20,
               colorFilter: AppColors.mediumEmphasis.filter,
             ),
-            DText(article.likesCount.toString()),
+            DefaultText(article.likesCount.toString()),
           ],
         ),
         Row(
@@ -34,7 +34,7 @@ class ArticleListTileBottom extends StatelessWidget {
               height: 20,
               colorFilter: AppColors.mediumEmphasis.filter,
             ),
-            DText(article.stocksCount.toString()),
+            DefaultText(article.stocksCount.toString()),
           ],
         ),
         Row(
@@ -45,7 +45,7 @@ class ArticleListTileBottom extends StatelessWidget {
               size: 18,
               color: AppColors.mediumEmphasis,
             ),
-            DText(article.commentsCount.toString()),
+            DefaultText(article.commentsCount.toString()),
           ],
         ),
       ],

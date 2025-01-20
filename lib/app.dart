@@ -8,12 +8,15 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SearchPage(),
-      locale: TranslationProvider.of(context).flutterLocale,
-      localizationsDelegates: GlobalMaterialLocalizations.delegates,
-      supportedLocales: AppLocaleUtils.supportedLocales,
-      debugShowCheckedModeBanner: false,
+    return TooltipVisibility(
+      visible: false,
+      child: MaterialApp(
+        home: SearchPage(),
+        locale: TranslationProvider.of(context).flutterLocale,
+        localizationsDelegates: GlobalMaterialLocalizations.delegates,
+        supportedLocales: AppLocaleUtils.supportedLocales,
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:search_qiita_articles/presentation/app_colors.dart';
 
-class DText extends StatelessWidget {
-  const DText(
+class DefaultText extends StatelessWidget {
+  const DefaultText(
     this.data, {
     super.key,
     Color? color,

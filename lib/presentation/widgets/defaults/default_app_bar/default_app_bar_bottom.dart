@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class DAppBarBottom extends StatelessWidget implements PreferredSizeWidget {
-  const DAppBarBottom({super.key, required this.child});
+class DefaultAppBarBottom extends StatelessWidget
+    implements PreferredSizeWidget {
+  const DefaultAppBarBottom({super.key, required this.child});
 
   final Widget child;
 

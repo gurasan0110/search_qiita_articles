@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:search_qiita_articles/presentation/app_colors.dart';
-import 'package:search_qiita_articles/presentation/widgets/defaults/d_progress_indicator.dart';
+import 'package:search_qiita_articles/presentation/widgets/defaults/default_progress_indicator.dart';
 
 class PaginationListView<T> extends StatelessWidget {
   const PaginationListView(
@@ -35,7 +35,7 @@ class PaginationListView<T> extends StatelessWidget {
         child: ListView.separated(
           itemBuilder: (context, index) {
             if (index == value.length) {
-              return Center(child: DProgressIndicator());
+              return Center(child: DefaultProgressIndicator());
             }
 
             return itemBuilder(context, value[index]);

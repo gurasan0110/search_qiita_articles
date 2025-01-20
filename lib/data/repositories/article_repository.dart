@@ -1,12 +1,12 @@
 import 'package:search_qiita_articles/core/types.dart';
-import 'package:search_qiita_articles/data/d_dio.dart';
+import 'package:search_qiita_articles/data/default_dio.dart';
 import 'package:search_qiita_articles/domain/models/article.dart';
 import 'package:search_qiita_articles/domain/models/pagination.dart';
 
 class ArticleRepository {
   ArticleRepository();
 
-  final _dio = DDio();
+  final _dio = DefaultDio();
 
   Future<Pagination<Article>> searchArticles(int page, {String? query}) async {
     final queryParameters = {'page': page, if (query != null) 'query': query};
