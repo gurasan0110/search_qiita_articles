@@ -34,6 +34,7 @@ class TranslationsEn implements Translations {
 
 	// Translations
 	@override String get datePattern => 'yyyy/MM/dd';
+	@override String get searchArticles => 'Search articles';
 }
 
 /// Flat map(s) containing all translations.
@@ -42,6 +43,7 @@ extension on TranslationsEn {
 	dynamic _flatMapFunction(String path) {
 		switch (path) {
 			case 'datePattern': return 'yyyy/MM/dd';
+			case 'searchArticles': return 'Search articles';
 			default: return null;
 		}
 	}

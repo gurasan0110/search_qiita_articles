@@ -1,3 +1,4 @@
 {
-    "datePattern": "yyyy/MM/dd"
+    "datePattern": "yyyy/MM/dd",
+    "searchArticles": "Search articles"
 }

@@ -2,19 +2,17 @@ import 'package:search_qiita_articles/core/types.dart';
 import 'package:search_qiita_articles/data/d_dio.dart';
 import 'package:search_qiita_articles/domain/models/article.dart';
 import 'package:search_qiita_articles/domain/models/pagination.dart';
-import 'package:search_qiita_articles/domain/models/query_parameters.dart';
 
 class ArticleRepository {
   ArticleRepository();
 
   final _dio = DDio();
 
-  Future<Pagination<Article>> searchArticles(
-    QueryParameters queryParameters,
-  ) async {
+  Future<Pagination<Article>> searchArticles(int page, {String? query}) async {
+    final queryParameters = {'page': page, if (query != null) 'query': query};
     final response = await _dio.get<List>(
       '/items',
-      queryParameters: queryParameters.toJson(),
+      queryParameters: queryParameters,
     );
 
     final totalCountString = response.headers.value('Total-Count')!;
