@@ -5,7 +5,7 @@ import 'package:search_qiita_articles/presentation/widgets/defaults/default_app_
 import 'package:search_qiita_articles/presentation/widgets/defaults/default_app_bar/default_app_bar_bottom.dart';
 import 'package:search_qiita_articles/presentation/widgets/pages/search_page/search_page_notifier.dart';
 import 'package:search_qiita_articles/presentation/widgets/pages/search_page/widgets/search_page_body.dart';
-import 'package:search_qiita_articles/presentation/widgets/search_text_field.dart';
+import 'package:search_qiita_articles/presentation/widgets/search_field/search_field.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key, this.query});
@@ -23,7 +23,7 @@ class SearchPage extends StatelessWidget {
       child: Scaffold(
         appBar: DefaultAppBar(
           bottom: DefaultAppBarBottom(
-            child: SearchTextField(onSubmitted: (query) async {
+            child: SearchField(onSubmitted: (query) async {
               if (query.trim().isEmpty) return;
               await Navigator.push(
                 context,

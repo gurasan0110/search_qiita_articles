@@ -12,7 +12,7 @@ class DefaultAppBarBottom extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      padding: EdgeInsets.only(bottom: 16),
       child: child,
     );
   }
