@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:search_qiita_articles/presentation/app_colors.dart';
 import 'package:search_qiita_articles/presentation/widgets/defaults/d_app_bar/d_app_bar.dart';
 import 'package:search_qiita_articles/presentation/widgets/defaults/d_app_bar/d_app_bar_bottom.dart';
 import 'package:search_qiita_articles/presentation/widgets/pages/search_page/search_page_notifier.dart';
@@ -34,6 +35,7 @@ class SearchPage extends StatelessWidget {
           ),
         ),
         body: SearchPageBody(),
+        backgroundColor: AppColors.white,
       ),
     );
   }

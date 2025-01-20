@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:search_qiita_articles/presentation/app_colors.dart';
 import 'package:search_qiita_articles/presentation/widgets/logo.dart';
 
 class DAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -17,8 +18,9 @@ class DAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Logo(),
       bottom: bottom,
+      surfaceTintColor: AppColors.white,
+      backgroundColor: AppColors.white,
       centerTitle: true,
-      forceMaterialTransparency: true,
     );
   }
 }
