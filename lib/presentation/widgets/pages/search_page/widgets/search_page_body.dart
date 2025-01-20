@@ -5,10 +5,13 @@ import 'package:search_qiita_articles/presentation/widgets/defaults/default_divi
 import 'package:search_qiita_articles/presentation/widgets/defaults/default_progress_indicator.dart';
 import 'package:search_qiita_articles/presentation/widgets/defaults/default_text.dart';
 import 'package:search_qiita_articles/presentation/widgets/pages/search_page/search_page_notifier.dart';
+import 'package:search_qiita_articles/presentation/widgets/pages/search_page/widgets/search_page_search_results.dart';
 import 'package:search_qiita_articles/presentation/widgets/pagination_list_view.dart';
 
 class SearchPageBody extends ConsumerWidget {
-  const SearchPageBody({super.key});
+  const SearchPageBody({super.key, this.query});
+
+  final String? query;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -40,17 +43,28 @@ class SearchPageBody extends ConsumerWidget {
       (s) => s.paginationState.isLoadingNextPage,
     ));
 
-    return PaginationListView(
-      pagination.value,
-      isLoadingNextPage: isLoadingNextPage,
-      onRefresh: () => ref
-          .read(searchPageNotifierProvider.notifier)
-          .searchFirstPageArticles(),
-      onPagination: () => ref
-          .read(searchPageNotifierProvider.notifier)
-          .searchNextPageArticles(),
-      itemBuilder: (context, article) => ArticleListTile(article),
-      separatorBuilder: (context) => DefaultDivider(),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SearchPageSearchResults(
+          query: query,
+          totalCount: pagination.totalCount,
+        ),
+        Expanded(
+          child: PaginationListView(
+            pagination.value,
+            isLoadingNextPage: isLoadingNextPage,
+            onRefresh: ref
+                .read(searchPageNotifierProvider.notifier)
+                .searchFirstPageArticles,
+            onPagination: ref
+                .read(searchPageNotifierProvider.notifier)
+                .searchNextPageArticles,
+            itemBuilder: (context, article) => ArticleListTile(article),
+            separatorBuilder: (context) => DefaultDivider(),
+          ),
+        ),
+      ],
     );
   }
 }

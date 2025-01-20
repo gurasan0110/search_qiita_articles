@@ -35,6 +35,18 @@ class TranslationsEn implements Translations {
 	// Translations
 	@override String get datePattern => 'yyyy/MM/dd';
 	@override String get searchArticles => 'Search articles';
+	@override late final _TranslationsSearchResultsEn searchResults = _TranslationsSearchResultsEn._(_root);
+}
+
+// Path: searchResults
+class _TranslationsSearchResultsEn implements TranslationsSearchResultsJa {
+	_TranslationsSearchResultsEn._(this._root);
+
+	final TranslationsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String queryIsNotNull({required Object totalCount, required Object query}) => '${totalCount} search results for "${query}"';
+	@override String queryIsNull({required Object totalCount}) => '${totalCount} search results';
 }
 
 /// Flat map(s) containing all translations.
@@ -44,6 +56,8 @@ extension on TranslationsEn {
 		switch (path) {
 			case 'datePattern': return 'yyyy/MM/dd';
 			case 'searchArticles': return 'Search articles';
+			case 'searchResults.queryIsNotNull': return ({required Object totalCount, required Object query}) => '${totalCount} search results for "${query}"';
+			case 'searchResults.queryIsNull': return ({required Object totalCount}) => '${totalCount} search results';
 			default: return null;
 		}
 	}

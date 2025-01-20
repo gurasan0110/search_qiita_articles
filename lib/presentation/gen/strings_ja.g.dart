@@ -39,6 +39,18 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	// Translations
 	String get datePattern => 'yyyy年MM月dd日';
 	String get searchArticles => '記事を検索';
+	late final TranslationsSearchResultsJa searchResults = TranslationsSearchResultsJa._(_root);
+}
+
+// Path: searchResults
+class TranslationsSearchResultsJa {
+	TranslationsSearchResultsJa._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String queryIsNotNull({required Object query, required Object totalCount}) => '「${query}」の検索結果：${totalCount}件';
+	String queryIsNull({required Object totalCount}) => '検索結果：${totalCount}件';
 }
 
 /// Flat map(s) containing all translations.
@@ -48,6 +60,8 @@ extension on Translations {
 		switch (path) {
 			case 'datePattern': return 'yyyy年MM月dd日';
 			case 'searchArticles': return '記事を検索';
+			case 'searchResults.queryIsNotNull': return ({required Object query, required Object totalCount}) => '「${query}」の検索結果：${totalCount}件';
+			case 'searchResults.queryIsNull': return ({required Object totalCount}) => '検索結果：${totalCount}件';
 			default: return null;
 		}
 	}

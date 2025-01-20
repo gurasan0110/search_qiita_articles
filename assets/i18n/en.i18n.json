@@ -1,4 +1,8 @@
 {
     "datePattern": "yyyy/MM/dd",
-    "searchArticles": "Search articles"
+    "searchArticles": "Search articles",
+    "searchResults": {
+        "queryIsNotNull": "$totalCount search results for \"$query\"",
+        "queryIsNull": "$totalCount search results"
+    }
 }

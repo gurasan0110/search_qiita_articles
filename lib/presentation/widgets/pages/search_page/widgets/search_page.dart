@@ -34,7 +34,7 @@ class SearchPage extends StatelessWidget {
             }),
           ),
         ),
-        body: SearchPageBody(),
+        body: SearchPageBody(query: query),
         backgroundColor: AppColors.white,
       ),
     );
