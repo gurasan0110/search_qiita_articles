@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:search_qiita_articles/application/services/article_service.dart';
 import 'package:search_qiita_articles/domain/models/article.dart';
-import 'package:search_qiita_articles/presentation/widgets/pages/search_page/search_page_s.dart';
+import 'package:search_qiita_articles/presentation/widgets/pages/search_page/search_page_state.dart';
 
 part 'search_page_notifier.g.dart';
 
@@ -16,46 +16,41 @@ class SearchPageNotifier extends _$SearchPageNotifier {
   final _service = ArticleService();
 
   @override
-  SearchPageS build() {
+  SearchPageState build() {
     listenSelf((previous, _) {
-      if (previous == null) Future.microtask(_searchFirstPageArticles);
+      if (previous == null) Future.microtask(searchFirstPageArticles);
     });
 
-    return SearchPageS();
+    return SearchPageState();
   }
+
+  Future<void> searchFirstPageArticles() => _searchArticles(1);
 
   Future<void> searchNextPageArticles() async {
-    if (state.paginationS.isLoadingNextPage) return;
+    if (state.paginationState.isLoadingNextPage) return;
 
     final page = state.page + 1;
-    if (state.paginationS.valueS.value.maxPage < page) return;
+    if (state.paginationState.pagination!.maxPage < page) return;
 
-    state = state.copyWith.paginationS(isLoadingNextPage: true);
+    state = state.copyWith.paginationState(isLoadingNextPage: true);
     await _searchArticles(page);
-    state = state.copyWith.paginationS(isLoadingNextPage: false);
-  }
-
-  Future<void> researchFirstPageArticles() => _searchArticles(1);
-
-  Future<void> _searchFirstPageArticles() async {
-    if (state.paginationS.isLoadingFirstPage) return;
-    state = state.copyWith.paginationS(isLoadingFirstPage: true);
-    await _searchArticles(1);
-    state = state.copyWith.paginationS(isLoadingFirstPage: false);
+    state = state.copyWith.paginationState(isLoadingNextPage: false);
   }
 
   Future<void> _searchArticles(int page) async {
     try {
       final pagination = await _service.searchArticles(page, query: _query);
-      final paginationS = state.paginationS;
-      final oldArticles = paginationS.valueS.value.value;
-      final articles = page == 1 ? <Article>[] : oldArticles;
+      final paginationState = state.paginationState;
+      final oldArticles = paginationState.pagination?.value;
+      final articles = page == 1 ? <Article>[] : oldArticles!;
       final newArticles = articles + pagination.value;
       final newPagination = pagination.copyWith(value: newArticles);
-      final newPaginationS = paginationS.copyWith.valueS(value: newPagination);
-      state = state.copyWith(page: page, paginationS: newPaginationS);
+      final newPaginationState = paginationState.copyWith(
+        pagination: newPagination,
+      );
+      state = state.copyWith(page: page, paginationState: newPaginationState);
     } on Exception catch (exception) {
-      state = state.copyWith.paginationS.valueS(exception: exception);
+      state = state.copyWith(exception: exception);
     }
   }
 }

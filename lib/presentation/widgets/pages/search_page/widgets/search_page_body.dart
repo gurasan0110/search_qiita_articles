@@ -13,7 +13,7 @@ class SearchPageBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(
-      searchPageNotifierProvider.select((s) => s.paginationS.valueS.exception),
+      searchPageNotifierProvider.select((s) => s.exception),
       (_, exception) {
         final scaffoldMessengerS = ScaffoldMessenger.of(context);
         scaffoldMessengerS.showMaterialBanner(
@@ -30,25 +30,22 @@ class SearchPageBody extends ConsumerWidget {
       },
     );
 
-    final isLoadingFirstPage = ref.watch(searchPageNotifierProvider.select(
-      (s) => s.paginationS.isLoadingFirstPage,
+    final pagination = ref.watch(searchPageNotifierProvider.select(
+      (s) => s.paginationState.pagination,
     ));
 
-    if (isLoadingFirstPage) return Center(child: DProgressIndicator());
+    if (pagination == null) return Center(child: DProgressIndicator());
 
-    final (articles, isLoadingNextPage) = ref.watch(
-      searchPageNotifierProvider.select((s) {
-        final paginationS = s.paginationS;
-        return (paginationS.valueS.value.value, paginationS.isLoadingNextPage);
-      }),
-    );
+    final isLoadingNextPage = ref.watch(searchPageNotifierProvider.select(
+      (s) => s.paginationState.isLoadingNextPage,
+    ));
 
     return PaginationListView(
-      articles,
+      pagination.value,
       isLoadingNextPage: isLoadingNextPage,
-      onRefresh: ref
+      onRefresh: () => ref
           .read(searchPageNotifierProvider.notifier)
-          .researchFirstPageArticles,
+          .searchFirstPageArticles(),
       onPagination: () => ref
           .read(searchPageNotifierProvider.notifier)
           .searchNextPageArticles(),
