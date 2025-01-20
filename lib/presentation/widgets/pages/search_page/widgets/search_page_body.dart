@@ -4,16 +4,16 @@ import 'package:search_qiita_articles/presentation/widgets/article_list_tile/art
 import 'package:search_qiita_articles/presentation/widgets/defaults/d_divider.dart';
 import 'package:search_qiita_articles/presentation/widgets/defaults/d_progress_indicator.dart';
 import 'package:search_qiita_articles/presentation/widgets/defaults/d_text.dart';
-import 'package:search_qiita_articles/presentation/widgets/pages/home_page/home_page_notifier.dart';
+import 'package:search_qiita_articles/presentation/widgets/pages/search_page/search_page_notifier.dart';
 import 'package:search_qiita_articles/presentation/widgets/pagination_list_view.dart';
 
-class HomePageBody extends ConsumerWidget {
-  const HomePageBody({super.key});
+class SearchPageBody extends ConsumerWidget {
+  const SearchPageBody({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(
-      homePageNotifierProvider.select((s) => s.paginationS.valueS.exception),
+      searchPageNotifierProvider.select((s) => s.paginationS.valueS.exception),
       (_, exception) {
         final scaffoldMessengerS = ScaffoldMessenger.of(context);
         scaffoldMessengerS.showMaterialBanner(
@@ -30,14 +30,14 @@ class HomePageBody extends ConsumerWidget {
       },
     );
 
-    final isLoadingFirstPage = ref.watch(homePageNotifierProvider.select(
+    final isLoadingFirstPage = ref.watch(searchPageNotifierProvider.select(
       (s) => s.paginationS.isLoadingFirstPage,
     ));
 
     if (isLoadingFirstPage) return Center(child: DProgressIndicator());
 
     final (articles, isLoadingNextPage) = ref.watch(
-      homePageNotifierProvider.select((s) {
+      searchPageNotifierProvider.select((s) {
         final paginationS = s.paginationS;
         return (paginationS.valueS.value.value, paginationS.isLoadingNextPage);
       }),
@@ -46,14 +46,12 @@ class HomePageBody extends ConsumerWidget {
     return PaginationListView(
       articles,
       isLoadingNextPage: isLoadingNextPage,
-      onRefresh: () => ref
-          .read(homePageNotifierProvider.notifier)
-          .researchFirstPageArticles(),
-      onPagination: () async {
-        await ref
-            .read(homePageNotifierProvider.notifier)
-            .searchNextPageArticles();
-      },
+      onRefresh: ref
+          .read(searchPageNotifierProvider.notifier)
+          .researchFirstPageArticles,
+      onPagination: () => ref
+          .read(searchPageNotifierProvider.notifier)
+          .searchNextPageArticles(),
       itemBuilder: (context, article) => ArticleListTile(article),
       separatorBuilder: (context) => DDivider(),
     );

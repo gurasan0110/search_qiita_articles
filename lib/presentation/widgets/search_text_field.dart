@@ -1,31 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:search_qiita_articles/presentation/app_colors.dart';
 import 'package:search_qiita_articles/presentation/gen/strings.g.dart';
 
-class SearchTextField extends StatelessWidget {
-  const SearchTextField({
-    super.key,
-    this.controller,
-    this.suffixIcon,
-    Color? focusedBorderColor,
-    bool? readOnly,
-    bool? autofocus,
-    this.onSubmitted,
-    this.onTap,
-  })  : focusedBorderColor = focusedBorderColor ?? AppColors.qiitaGreen,
-        readOnly = readOnly ?? false,
-        autofocus = autofocus ?? false;
+class SearchTextField extends HookWidget {
+  const SearchTextField({super.key, this.onSubmitted});
 
-  final TextEditingController? controller;
-  final Widget? suffixIcon;
-  final Color focusedBorderColor;
-  final bool readOnly;
-  final bool autofocus;
   final void Function(String query)? onSubmitted;
-  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
+    final controller = useTextEditingController();
+
     return TextField(
       controller: controller,
       decoration: InputDecoration(
@@ -33,20 +19,20 @@ class SearchTextField extends StatelessWidget {
         hintStyle: TextStyle(color: AppColors.disabled),
         prefixIcon: Icon(Icons.search),
         prefixIconColor: AppColors.mediumEmphasis,
-        suffixIcon: suffixIcon,
+        suffixIcon: IconButton(
+          onPressed: controller.clear,
+          icon: Icon(Icons.close),
+        ),
         suffixIconColor: AppColors.mediumEmphasis,
         filled: true,
         fillColor: AppColors.gray20,
-        focusedBorder: border(focusedBorderColor),
+        focusedBorder: border(AppColors.qiitaGreen),
         enabledBorder: border(AppColors.transparent),
       ),
       textInputAction: TextInputAction.search,
       style: TextStyle(color: AppColors.highEmphasis),
-      readOnly: readOnly,
-      autofocus: autofocus,
       onSubmitted: onSubmitted,
       cursorColor: AppColors.qiitaGreen,
-      onTap: onTap,
     );
   }
 
