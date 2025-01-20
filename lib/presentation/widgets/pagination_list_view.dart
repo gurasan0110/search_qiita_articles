@@ -32,6 +32,7 @@ class PaginationListView<T> extends StatelessWidget {
       child: RefreshIndicator(
         onRefresh: onRefresh,
         color: AppColors.qiitaGreen,
+        backgroundColor: AppColors.white,
         child: ListView.separated(
           itemBuilder: (context, index) {
             if (index == value.length) {
