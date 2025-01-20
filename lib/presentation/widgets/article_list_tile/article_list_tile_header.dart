@@ -37,22 +37,6 @@ class ArticleListTileHeader extends StatelessWidget {
                         ],
                       ),
                     ),
-                  if (article.user.organization.isNotEmpty)
-                    Flexible(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        spacing: 4,
-                        children: [
-                          DText('in'),
-                          Flexible(
-                            child: DText(
-                              article.user.organization,
-                              maxLines: 1,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                 ],
               ),
               DText(

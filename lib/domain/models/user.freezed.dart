@@ -22,7 +22,6 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get organization => throw _privateConstructorUsedError;
   String get profileImageUrl => throw _privateConstructorUsedError;
 
   /// Create a copy of User
@@ -36,8 +35,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call(
-      {String id, String name, String organization, String profileImageUrl});
+  $Res call({String id, String name, String profileImageUrl});
 }
 
 /// @nodoc
@@ -57,7 +55,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? organization = null,
     Object? profileImageUrl = null,
   }) {
     return _then(_value.copyWith(
@@ -68,10 +65,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      organization: null == organization
-          ? _value.organization
-          : organization // ignore: cast_nullable_to_non_nullable
               as String,
       profileImageUrl: null == profileImageUrl
           ? _value.profileImageUrl
@@ -88,8 +81,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$UserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id, String name, String organization, String profileImageUrl});
+  $Res call({String id, String name, String profileImageUrl});
 }
 
 /// @nodoc
@@ -106,7 +98,6 @@ class __$$UserImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? organization = null,
     Object? profileImageUrl = null,
   }) {
     return _then(_$UserImpl(
@@ -117,10 +108,6 @@ class __$$UserImplCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      organization: null == organization
-          ? _value.organization
-          : organization // ignore: cast_nullable_to_non_nullable
               as String,
       profileImageUrl: null == profileImageUrl
           ? _value.profileImageUrl
@@ -134,10 +121,7 @@ class __$$UserImplCopyWithImpl<$Res>
 @JsonSerializable(createToJson: false)
 class _$UserImpl implements _User {
   const _$UserImpl(
-      {required this.id,
-      this.name = '',
-      this.organization = '',
-      required this.profileImageUrl});
+      {required this.id, this.name = '', required this.profileImageUrl});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -148,14 +132,11 @@ class _$UserImpl implements _User {
   @JsonKey()
   final String name;
   @override
-  @JsonKey()
-  final String organization;
-  @override
   final String profileImageUrl;
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, organization: $organization, profileImageUrl: $profileImageUrl)';
+    return 'User(id: $id, name: $name, profileImageUrl: $profileImageUrl)';
   }
 
   @override
@@ -165,16 +146,13 @@ class _$UserImpl implements _User {
             other is _$UserImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.organization, organization) ||
-                other.organization == organization) &&
             (identical(other.profileImageUrl, profileImageUrl) ||
                 other.profileImageUrl == profileImageUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, organization, profileImageUrl);
+  int get hashCode => Object.hash(runtimeType, id, name, profileImageUrl);
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -189,7 +167,6 @@ abstract class _User implements User {
   const factory _User(
       {required final String id,
       final String name,
-      final String organization,
       required final String profileImageUrl}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
@@ -198,8 +175,6 @@ abstract class _User implements User {
   String get id;
   @override
   String get name;
-  @override
-  String get organization;
   @override
   String get profileImageUrl;
 
