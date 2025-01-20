@@ -12,14 +12,19 @@ class ArticleListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(16),
+    return SafeArea(
+      minimum: EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 8,
         children: [
           ArticleListTileHeader(article),
-          DText(article.title, size: 16, weight: FontWeight.bold, maxLines: 3),
+          DText(
+            article.title,
+            size: 16,
+            weight: FontWeight.bold,
+            maxLines: 3,
+          ),
           TagChips(article.tags),
           ArticleListTileBottom(article),
         ],
